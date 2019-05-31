@@ -1,17 +1,121 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
-</ion-content>
+
+
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      
+      <ion-title>
+        Home
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content padding class="animated fadeIn login auth-page">
+      <div class="login-content">
+     
+    
+        <!-- Logo -->
+        <div padding-horizontal text-center class="animated fadeInDown">
+          <div class="logo"></div>
+          <h2 ion-text class="text-primary">
+            <strong>Tracker</strong> Start Theme
+          </h2>
+        </div>
+    
+        <!-- Login form -->
+       <!--  <form [formGroup]="loginForm" class="list-form"> -->
+            <form [formGroup]="loginForm" >
+          <ion-item>
+            <ion-label floating>
+              <ion-icon name="mail" item-start class="text-primary"></ion-icon>
+              Email
+            </ion-label>
+            <ion-input formControlName="username" type="email"></ion-input>
+          </ion-item>
+    
+          <ion-item>
+            <ion-label floating>
+              <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+              Password
+            </ion-label>
+            <ion-input formControlName="password"  type="password"></ion-input>
+          </ion-item>
+        </form>
+    
+        <p text-right ion-text color="secondary" tappable (click)="forgotPass()"><strong>Forgot Password?</strong></p>
+    
+        <div>
+          <button ion-button icon-start block color="dark" tappable (click)="login()">
+            <ion-icon name="log-in"></ion-icon>
+            SIGN IN
+          </button>
+    
+    
+   <!--        <ion-grid>
+            <ion-row>
+              <ion-col col-4>
+                <button ion-button icon-only block class="btn-facebook">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </button>
+              </ion-col>
+              <ion-col col-4>
+                <button ion-button icon-only block class="btn-twitter">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </button>
+              </ion-col>
+              <ion-col col-4>
+                <button ion-button icon-only block class="btn-gplus">
+                  <ion-icon name="logo-googleplus"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-grid> -->
+    
+        </div>
+    
+    
+        <!-- Other links -->
+        <div text-center margin-top>
+          <span ion-text color="secondary" tappable (click)="goToSignup()">New here? <strong>Sign up</strong></span>
+        </div>
+    
+      </div>
+    </ion-content>
+    
+<!-- 
+
+    <ion-content>
+      <div>
+        <form [formGroup]="loginForm" novalidate>
+ 
+            <ion-item>
+              <ion-label>Username</ion-label>
+              <ion-input formControlName="username" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Password</ion-label>
+              <ion-input formControlName="password" type="password"></ion-input>
+            </ion-item>
+         
+  
+          <button ion-button (click)="login()">Login</button>
+        </form>
+        </div>
+  
+          <div (click)="goToSignup()" colour=red>
+          
+          
+            <span>New User ? - Click to Sign Up Here !!</span>
+          </div>
+          <ion-list>
+            <ion-item *ngFor="let dev of developers">
+
+              <h2>Sessions are :  {{dev.session}}</h2>
+            </ion-item>
+          </ion-list>
+ 
+
+    </ion-content> -->

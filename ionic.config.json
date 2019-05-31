@@ -1,5 +1,8 @@
 {
   "name": "expense_tracker",
-  "app_id": "",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
   "type": "ionic-angular"
 }
