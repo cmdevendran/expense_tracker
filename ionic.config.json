@@ -1,0 +1,7 @@
+{
+  "name": "exp_tracker_client_I5",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
