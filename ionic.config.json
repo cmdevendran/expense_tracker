@@ -3,5 +3,12 @@
   "integrations": {
     "capacitor": {}
   },
+  "proxies": [{
+    "path": "/home",
+    "proxyUrl":  "http://cors.api.com/api"
+}],
   "type": "angular"
 }
+
+
+

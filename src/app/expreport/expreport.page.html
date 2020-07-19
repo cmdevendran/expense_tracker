@@ -1,0 +1,115 @@
+
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Show Report</ion-title>
+    <ion-toggle slot="end" checked></ion-toggle>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-segment scrollable (ionChange)="segmentChanged($event)" color="secondary">
+    <ion-segment-button value="cmonth">
+      <ion-label>This Month</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="lmonth">
+      <ion-label>Last Month</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="custom">
+      <ion-label>Custom Report</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-card *ngIf="cshowme">
+    <form (ngSubmit)="getExpenses()">
+      <ion-item>
+        <ion-label stacked>Start Date</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY"  [(ngModel)]="formexpense.StartDate" placeholder="Start Date" name="StartDate"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>End Date</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY"  [(ngModel)]="formexpense.EndDate" placeholder="End Date" name="EndDate"></ion-datetime>
+      </ion-item>
+      <ion-button expand="block" color="danger" fill="solid" type="submit">Get Report</ion-button>
+    <!--   <button ion-button full type="submit">Get Report</button>
+     -->
+    </form>
+  </ion-card>
+
+  
+ 
+  <ion-card>
+  <ion-item color= "primary">
+      <ion-text>
+        <h3>Total Amount</h3>
+      </ion-text>
+      <ion-text  slot="end" >
+        <h2>{{total}}</h2>
+      </ion-text>
+<!--       <ion-label slot="end">{{total}}</ion-label>
+ -->  </ion-item>
+</ion-card>
+
+<ion-card *ngFor="let dev of iholder">
+  <ion-item (click)=getItemOfExpCat(dev.expcat)>
+    <ion-text >
+      <h3>{{dev.expcat}}</h3>
+    </ion-text>
+    <ion-text  slot="end" >
+      <h2>{{dev.totalexpamount}}</h2>
+    </ion-text>
+  </ion-item>
+
+</ion-card>
+
+
+
+<!-- 
+
+  <ion-card *ngFor="let dev of expenses">
+    <ion-card-header>
+      
+      <ion-card-title color="danger">
+        <ion-item>
+
+          <ion-button slot="end" (click)=deleteExp(dev._id)> <ion-icon  name="trash"> </ion-icon></ion-button>
+          
+          <ion-label >{{getDateOf(dev.expdate)}}</ion-label>
+        </ion-item>
+      </ion-card-title>
+    </ion-card-header>
+
+
+
+    <ion-card-content>
+
+      <ion-item>
+      <ion-label class="ion-text-wrap">
+        <ion-text color="primary">
+          <h3>Category : {{dev.expcat}}</h3>
+        </ion-text>
+        <ion-text color="primary">
+          <p>Amount : {{dev.expamount}}</p>
+        </ion-text>
+        <ion-text color="primary">
+          <p>Remark : {{dev.expremark}}</p>
+        </ion-text>
+        <ion-text color="primary">
+          <p>Remark : {{dev.exppaymentmode}}</p>
+        </ion-text>
+               
+      </ion-label>
+    </ion-item>
+
+    </ion-card-content>
+    </ion-card>
+
+
+ -->
+
+</ion-content>

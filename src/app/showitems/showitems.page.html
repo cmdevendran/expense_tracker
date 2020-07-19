@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/expreport" (click)="dismiss()"></ion-back-button>
+  </ion-buttons>
+  <ion-title>Expense Items</ion-title>
+
+  
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let dev of items">
+    <ion-card-header>
+      
+      <ion-card-title color="danger">
+        <ion-item>
+
+          <ion-button slot="end" (click)=deleteExp(dev._id)> <ion-icon  name="trash"> </ion-icon></ion-button>
+          
+          <ion-label >{{getDateOf(dev.expdate)}}</ion-label>
+        </ion-item>
+      </ion-card-title>
+    </ion-card-header>
+
+
+
+    <ion-card-content>
+
+      <ion-item>
+      <ion-label class="ion-text-wrap">
+        <ion-text color="primary">
+          <h3>Category : {{dev.expcat}}</h3>
+        </ion-text>
+        <ion-text color="primary">
+          <p>Amount : {{dev.expamount}}</p>
+        </ion-text>
+        <ion-text color="primary">
+          <p>Remark : {{dev.expremark}}</p>
+        </ion-text>
+ 
+               
+      </ion-label>
+    </ion-item>
+
+    </ion-card-content>
+    </ion-card>
+
+</ion-content>
