@@ -48,7 +48,7 @@ export class ExpreportPage implements OnInit {
    
 
     this.databaseprovider.getSession("session").then(val=>{
-      //console.log("Expense Page + session  :"+val)
+      console.log("Expense Page + session  :"+val)
       this.sessions = val;
         this.auth.getExpenseCategories(val).subscribe(data=>{
           this.expense = data
@@ -280,16 +280,19 @@ let amount = 0
 
     }
 
-    async getItemOfExpCat(expcat){
-      console.log("category clicked "+expcat)
-      var obj2 = [];
+    async getItemOfExpCat(expcat1){ 
+      console.log("category clicked "+expcat1)
+      var obj2 = _.where(this.expenses,{expcat : expcat1})
+/*       
+This code is commented to use the underscorejs library _.where method 
+var obj2 = [];
         this.expenses.forEach(function(d) {
           if (d.expcat==expcat) {
             obj2.push({ _id : d._id, expdate : d.expdate, expamount : d.expamount, expremark : d.expremark, expcat : d.expcat });
     
           }
         });
-      console.log("deva  "+obj2)
+      console.log("deva  "+obj2) */
       this.presentModal(obj2)
 
     }

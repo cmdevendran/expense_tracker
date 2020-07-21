@@ -49,7 +49,7 @@
         <h3>Total Amount</h3>
       </ion-text>
       <ion-text  slot="end" >
-        <h2>{{total}}</h2>
+        <h3>{{total}}</h3>
       </ion-text>
 <!--       <ion-label slot="end">{{total}}</ion-label>
  -->  </ion-item>
@@ -58,10 +58,10 @@
 <ion-card *ngFor="let dev of iholder">
   <ion-item (click)=getItemOfExpCat(dev.expcat)>
     <ion-text >
-      <h3>{{dev.expcat}}</h3>
+      <h4>{{dev.expcat}}</h4>
     </ion-text>
     <ion-text  slot="end" >
-      <h2>{{dev.totalexpamount}}</h2>
+      <h4>{{dev.totalexpamount}}</h4>
     </ion-text>
   </ion-item>
 
