@@ -82,8 +82,10 @@ export class ExpreportPage implements OnInit {
       endDate: this.formexpense['EndDate']
     }
     console.log("st date : "+this.startDate)
+    
 let amount = 0
-    this.databaseprovider.getSession('session').then(sess => {
+this.getExpensesthroughSegment(credential.startDate, credential.endDate)
+/*     this.databaseprovider.getSession('session').then(sess => {
       this.auth.getExpenses(sess, credential).subscribe((data) => {
           this.expense = data;
           this.expenses = JSON.parse(JSON.stringify(data));
@@ -91,14 +93,13 @@ let amount = 0
           data.forEach(function(item){
             console.log("this item "+item.expamount)
             amount += item.expamount
-    
-    
+   
           });
           console.log (" this total "+amount)
           this.total = amount;
           
       })})
-
+ */
   }
 
 
@@ -207,7 +208,7 @@ let amount = 0
           ],
   
           subject: 'expense Tracker',
-          body: 'Yout expense tracker',
+          body: 'Your expense tracker',
           isHtml: true
         };
         this.emailComposer.open(email);
@@ -248,12 +249,12 @@ let amount = 0
 
       if(ev.detail.value=="custom"){
         this.cshowme = true
-      
+        console.log('Segment changed custom', ev.detail.value);
 
       }
       else if(ev.detail.value=="cmonth"){
         this.cshowme = false
-
+        console.log('Segment changed', ev.detail.value);
         let startdate = new Date(d.getFullYear(),d.getMonth(),1);
         let enddate = new Date()
 
@@ -267,6 +268,7 @@ let amount = 0
       }
       else{
         this.cshowme = false
+       // console.log('Segment changed', ev.detail.value);
         let startdate = new Date(d.getFullYear(),d.getMonth()-1,1);
         let enddate = new Date(d.getFullYear(),d.getMonth(),1,0)
 
