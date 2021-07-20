@@ -1,14 +1,14 @@
 {
   "name": "exp_tracker_client_I5",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
-  "proxies": [{
-    "path": "/home",
-    "proxyUrl":  "http://cors.api.com/api"
-}],
+  "proxies": [
+    {
+      "path": "/home",
+      "proxyUrl": "http://cors.api.com/api"
+    }
+  ],
   "type": "angular"
 }
-
-
-
