@@ -7,6 +7,7 @@ export const environment = {
 };
 export const nodeserver = "https://expenseserver.herokuapp.com"
 //export const nodeserver = "http://192.168.1.137:8080"
+//export const nodeserver = "http://192.168.1.137:8080"
 
 /*
  * For easier debugging in development mode, you can import the following file

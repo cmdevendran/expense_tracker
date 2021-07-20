@@ -157,5 +157,9 @@ async function doAll():Promise<void>{
     console.log('ionViewDidLoad ExpensePage');
   }
 
+  showSpinner(){
+    
+  }
+
 }
 

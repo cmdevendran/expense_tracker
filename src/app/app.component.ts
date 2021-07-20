@@ -28,6 +28,12 @@ export class AppComponent {
       title: 'Login',
       url: '/login',
       icon: 'heart'
+    },
+    {
+      title: 'Analytics',
+      url: '/analytics',
+      icon: 'stats'
+
     }
   
   ];

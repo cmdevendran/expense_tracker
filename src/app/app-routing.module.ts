@@ -49,6 +49,10 @@ const routes: Routes = [
     canActivate: [AuthguardGuard]
 
   },
+  {
+    path: 'analytics',
+    loadChildren: () => import('./analytics/analytics.module').then( m => m.AnalyticsPageModule)
+  },
 ]
 
 

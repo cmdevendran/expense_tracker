@@ -11,6 +11,8 @@ import { MethodCall } from '@angular/compiler';
 import { DatabaseService } from '../database/database.service';
 import { map } from 'rxjs/operators';
 
+import {HTTP} from '@ionic-native/http/ngx';
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +24,9 @@ export class AuthenticateService {
   mysession: '5a4c50b645e2964054e516c8';
 
   results: string[];
-  constructor(public http: HttpClient, private storage: Storage
+constructor(public http: HttpClient, private storage: Storage
+
+//    constructor(public http: HTTP, private storage: Storage
 //    private databaseprovider: DatabaseProvider) {
   ) {
     console.log('Hello AuthenticateProvider Provider');
@@ -31,10 +35,12 @@ export class AuthenticateService {
   loginMongoDB(logindata) {
     //console.log("data calling : "+JSON.stringify(logindata));
     var headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Origin' , '*');
+    headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+    headers.append('Accept','application/json');
+    headers.append('content-type','application/json');
+   // headers.append('Content-Type', 'application/json');
     return this.http.post(nodeserver + '/authenticate/rest/login/', logindata, { headers: headers }).pipe(map(res => res));
-      //  return this.http.post(nodeserver+'/authenticate/rest/login/', JSON.stringify(logindata))
-     // 
   }
 
   registerNewUser(registerdetails){

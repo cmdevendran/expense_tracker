@@ -124,20 +124,20 @@ let amount = 0
     
           });
           console.log (" this total "+amount)
-          this.total = amount;
+          this.total = amount.toFixed(2);
           let holder = {}
 
           this.expenses.forEach(function(d) {
-            if (holder.hasOwnProperty(d.expcat)) {
-              holder[d.expcat] = holder[d.expcat] + d.expamount;
+            if (holder.hasOwnProperty(d.expcat.toUpperCase())) {
+              holder[d.expcat.toUpperCase()] = holder[d.expcat.toUpperCase()] + d.expamount;
             } else {
-              holder[d.expcat] = d.expamount;
+              holder[d.expcat.toUpperCase()] = d.expamount;
             }
           });
           var obj2 = [];
 
           for (var prop in holder) {
-            obj2.push({ expcat: prop, totalexpamount: holder[prop] });
+            obj2.push({ expcat: prop, totalexpamount: holder[prop].toFixed(2) });
           }
           
           this.iholder = obj2
@@ -257,11 +257,22 @@ let amount = 0
         console.log('Segment changed', ev.detail.value);
         let startdate = new Date(d.getFullYear(),d.getMonth(),1);
         let enddate = new Date()
+        console.log("start date : "+startdate)
+        console.log("end date : "+new Date())
+
+        this.getExpensesthroughSegment(startdate.toISOString(),enddate.toISOString())
+
+      }
+      else if(ev.detail.value=="lmonth"){
+        this.cshowme = false
+        console.log('Segment changed', ev.detail.value + " "+d.getMonth);
+        let startdate = new Date(d.getFullYear(),d.getMonth()-1,1);
+        let enddate = new Date(d.getFullYear(),d.getMonth(),1 -1);
 
 
 
-        console.log("start date : "+startdate.toISOString)
-        console.log("end date : "+new Date().toISOString)
+        console.log("start date : "+startdate)
+        console.log("end date : "+new Date())
 
         this.getExpensesthroughSegment(startdate.toISOString(),enddate.toISOString())
 
@@ -284,7 +295,12 @@ let amount = 0
 
     async getItemOfExpCat(expcat1){ 
       console.log("category clicked "+expcat1)
-      var obj2 = _.where(this.expenses,{expcat : expcat1})
+      console.log("this"+this.expenses)
+      console.log(this.expenses.filter(obj =>
+        obj.expcat.toLowerCase().indexOf(expcat1.toLowerCase()) >= 0));
+      //var obj2 = _.where(this.expenses,{expcat: expcat1.toUpperCase()})
+      var obj2 = this.expenses.filter(obj =>
+        obj.expcat.toLowerCase().indexOf(expcat1.toLowerCase()) >= 0)
 /*       
 This code is commented to use the underscorejs library _.where method 
 var obj2 = [];
