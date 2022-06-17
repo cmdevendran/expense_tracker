@@ -6,8 +6,9 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Show Report</ion-title>
-    <ion-toggle slot="end" checked></ion-toggle>
-
+ 
+    <ion-toggle slot=end [(ngModel)]="detail" (ionChange)="details()" disabled="false"></ion-toggle>
+  
   </ion-toolbar>
 </ion-header>
 
@@ -36,8 +37,7 @@
         <ion-datetime displayFormat="DD/MM/YYYY"  [(ngModel)]="formexpense.EndDate" placeholder="End Date" name="EndDate"></ion-datetime>
       </ion-item>
       <ion-button expand="block" color="danger" fill="solid" type="submit">Get Report</ion-button>
-    <!--   <button ion-button full type="submit">Get Report</button>
-     -->
+
     </form>
   </ion-card>
 
@@ -51,8 +51,8 @@
       <ion-text  slot="end" >
         <h3>{{total}}</h3>
       </ion-text>
-<!--       <ion-label slot="end">{{total}}</ion-label>
- -->  </ion-item>
+      <!-- <ion-label slot="end">{{total}}</ion-label> -->
+ </ion-item>
 </ion-card>
 
 <ion-card *ngFor="let dev of iholder">
@@ -67,49 +67,5 @@
 
 </ion-card>
 
-
-
-<!-- 
-
-  <ion-card *ngFor="let dev of expenses">
-    <ion-card-header>
-      
-      <ion-card-title color="danger">
-        <ion-item>
-
-          <ion-button slot="end" (click)=deleteExp(dev._id)> <ion-icon  name="trash"> </ion-icon></ion-button>
-          
-          <ion-label >{{getDateOf(dev.expdate)}}</ion-label>
-        </ion-item>
-      </ion-card-title>
-    </ion-card-header>
-
-
-
-    <ion-card-content>
-
-      <ion-item>
-      <ion-label class="ion-text-wrap">
-        <ion-text color="primary">
-          <h3>Category : {{dev.expcat}}</h3>
-        </ion-text>
-        <ion-text color="primary">
-          <p>Amount : {{dev.expamount}}</p>
-        </ion-text>
-        <ion-text color="primary">
-          <p>Remark : {{dev.expremark}}</p>
-        </ion-text>
-        <ion-text color="primary">
-          <p>Remark : {{dev.exppaymentmode}}</p>
-        </ion-text>
-               
-      </ion-label>
-    </ion-item>
-
-    </ion-card-content>
-    </ion-card>
-
-
- -->
 
 </ion-content>

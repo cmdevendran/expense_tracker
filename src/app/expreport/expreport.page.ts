@@ -3,7 +3,7 @@ import { AuthenticateService } from '../authenticate/authenticate.service';
 import { DatabaseService} from '../database/database.service';
 import { File } from '@ionic-native/file/ngx';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { analyzeAndValidateNgModules, IfStmt } from '@angular/compiler';
 import * as _ from 'underscore'
 import { ModalController } from '@ionic/angular';
 import { ShowitemsPage } from '../showitems/showitems.page';
@@ -29,9 +29,11 @@ export class ExpreportPage implements OnInit {
   sessions :any;
   totalamount : [];
   total: any;
-  cshowme : boolean =false;
-  // for category group items
+  cshowme : boolean =true;
+  detail : boolean =true;
+
   iholder : any;
+
   
 
   
@@ -59,7 +61,7 @@ export class ExpreportPage implements OnInit {
   }
 
   async presentModal(listdata) {
-   // console.log(JSON.stringify(listdata))
+
     const modal = await this.modalController.create({
       component: ShowitemsPage,
       cssClass: 'my-custom-class',
@@ -77,6 +79,7 @@ export class ExpreportPage implements OnInit {
 
     console.log("Method get expenses");
     console.log(this.formexpense);
+    console.log("toggle status : "+this.detail)
     let credential = {
       startDate: this.formexpense['StartDate'],
       endDate: this.formexpense['EndDate']
@@ -85,28 +88,15 @@ export class ExpreportPage implements OnInit {
     
 let amount = 0
 this.getExpensesthroughSegment(credential.startDate, credential.endDate)
-/*     this.databaseprovider.getSession('session').then(sess => {
-      this.auth.getExpenses(sess, credential).subscribe((data) => {
-          this.expense = data;
-          this.expenses = JSON.parse(JSON.stringify(data));
-          console.log("Expenses : Report : "+JSON.stringify(this.expense))
-          data.forEach(function(item){
-            console.log("this item "+item.expamount)
-            amount += item.expamount
-   
-          });
-          console.log (" this total "+amount)
-          this.total = amount;
-          
-      })})
- */
+
   }
 
 
   getExpensesthroughSegment(startdate, enddate) {
 
+    if(this.detail){
 
-    console.log("Method get expenses");
+      console.log("Method get expenses");
     console.log(this.formexpense);
     let credential = {
       startDate: startdate,
@@ -145,21 +135,12 @@ let amount = 0
           
           
       })})
+    }
+
+    
 
   }
 
-
-
-  
-
-
-
-
-/*   generateArray(obj){
-        // return Object.keys(obj).map((key)=>{ return obj[key]});
-
-        return Object.keys(obj).map((key) => { return { key: key, value: obj[key] } });
-      } */
 
  getDateOf(ndate) {
         let vdate = new Date(ndate);
@@ -242,6 +223,17 @@ let amount = 0
   
     }
 
+    details(){
+      if(this.detail){
+        console.log(this.detail)
+      }
+      else{
+        console.log(this.detail)
+      }
+
+ 
+   }
+
     segmentChanged(ev: any) {
       
       console.log('Segment changed', ev.detail.value);
@@ -301,18 +293,10 @@ let amount = 0
       //var obj2 = _.where(this.expenses,{expcat: expcat1.toUpperCase()})
       var obj2 = this.expenses.filter(obj =>
         obj.expcat.toLowerCase().indexOf(expcat1.toLowerCase()) >= 0)
-/*       
-This code is commented to use the underscorejs library _.where method 
-var obj2 = [];
-        this.expenses.forEach(function(d) {
-          if (d.expcat==expcat) {
-            obj2.push({ _id : d._id, expdate : d.expdate, expamount : d.expamount, expremark : d.expremark, expcat : d.expcat });
-    
-          }
-        });
-      console.log("deva  "+obj2) */
+
       this.presentModal(obj2)
 
     }
+
 
 }

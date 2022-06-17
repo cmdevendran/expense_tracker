@@ -53,6 +53,18 @@ const routes: Routes = [
     path: 'analytics',
     loadChildren: () => import('./analytics/analytics.module').then( m => m.AnalyticsPageModule)
   },
+  {
+    path: 'stocks-tickers',
+    loadChildren: () => import('./settings/stocks-tickers/stocks-tickers.module').then( m => m.StocksTickersPageModule)
+  },
+  {
+    path: 'managestock',
+    loadChildren: () => import('./stocks/managestock/managestock.module').then( m => m.ManagestockPageModule)
+  },
+  {
+    path: 'portfolio',
+    loadChildren: () => import('./stocks/portfolio/portfolio.module').then( m => m.PortfolioPageModule)
+  },
 ]
 
 

@@ -34,7 +34,14 @@ export class AppComponent {
       url: '/analytics',
       icon: 'stats'
 
+    },
+    {
+      title: 'Stocks',
+      url: '/portfolio',
+      icon: 'stats'
+
     }
+  
   
   ];
 /*   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

@@ -1,0 +1,79 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Stocks</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <form [formGroup]="stockForm">
+      <div>
+        <!--
+          <ion-input type="date" displayFormat="DD/MM/YYYY" pickerFormat="DD-MM-YYYY" formControlName="expdate" ></ion-input>
+          -->
+          <ion-item>
+          <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" placeholder="Date" formControlName="date"></ion-datetime>
+      </ion-item>
+      </div>
+      <div>
+        <ion-item>
+          <ion-select placeholder="Exchange" formControlName="exchange" multiple="false" cancelText="Cancel" okText="Ok">
+
+            <ion-select-option *ngFor="let cat of ex; index as i" value="{{cat}}">{{cat}}</ion-select-option>
+          </ion-select>
+         
+          <ion-select placeholder="Ticker" formControlName="ticker" multiple="false" cancelText="Cancel" okText="Ok">
+
+            <ion-select-option *ngFor="let cat of cats; index as i" value="{{cat.ticker}}">{{cat.ticker}}</ion-select-option>
+          </ion-select>
+
+  
+        </ion-item>
+      </div>
+
+      
+      <ion-radio-group  formControlName="buyorsell" >
+        <ion-row>
+          <ion-col>
+               <ion-item>
+                  <ion-label>Buy</ion-label>
+                  <ion-radio mode="md" item-left value="buy" checked></ion-radio>
+             </ion-item>
+           </ion-col>
+      
+          <ion-col>
+              <ion-item>
+                  <ion-label>Sell</ion-label>
+                  <ion-radio mode="md" item-left value="sell"></ion-radio>
+             </ion-item>
+          </ion-col>
+
+      
+      </ion-row>
+      </ion-radio-group> 
+      <ion-item>
+          <ion-label>Quantity</ion-label>
+          <ion-input type="number" formControlName="qty"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>price</ion-label>
+        <ion-input type="number" formControlName="price"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>commission</ion-label>
+      <ion-input type="number" formControlName="commission"></ion-input>
+  </ion-item>
+ 
+      
+      <ion-button type="submit" color="danger" (click)="submit()" expand="block">Submit</ion-button>
+
+
+    </form>
+
+
+  </div>
+</ion-content>
