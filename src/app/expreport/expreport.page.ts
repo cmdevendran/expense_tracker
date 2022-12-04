@@ -287,16 +287,20 @@ let amount = 0
 
     async getItemOfExpCat(expcat1){ 
       console.log("category clicked "+expcat1)
-      console.log("this"+this.expenses)
-      console.log(this.expenses.filter(obj =>
-        obj.expcat.toLowerCase().indexOf(expcat1.toLowerCase()) >= 0));
+      console.log("expenses clicked : "+this.expenses)
+      console.log("expense array :"+this.expenses.filter(obj =>
+        obj.expcat.toLowerCase()===expcat1.toLowerCase() >= 0));
       //var obj2 = _.where(this.expenses,{expcat: expcat1.toUpperCase()})
       var obj2 = this.expenses.filter(obj =>
-        obj.expcat.toLowerCase().indexOf(expcat1.toLowerCase()) >= 0)
+        
+        //obj.expcat.toLowerCase().indexOf(expcat1.toLowerCase()) >= 0);
+        obj.expcat.toLowerCase()===expcat1.toLowerCase())
+        console.log(expcat1.toLowerCase());
 
       this.presentModal(obj2)
 
     }
+
 
 
 }

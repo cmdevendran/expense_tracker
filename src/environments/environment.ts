@@ -5,7 +5,7 @@
 export const environment = {
   production: false
 };
-export const nodeserver = "https://expenseserver.herokuapp.com"
+export const nodeserver = "https://expense-server-2hjw.onrender.com"
 //export const nodeserver = "http://192.168.10.137:8080"
 //export const nodeserver = "http://192.168.1.137:8080"
 
